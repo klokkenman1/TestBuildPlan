@@ -49,6 +49,7 @@ jobs:
 
   SmokeTestA:
     needs: GenerateDefFiles
+    environment: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -58,6 +59,7 @@ jobs:
 
   SmokeTestB:
     needs: GenerateDefFiles
+    environment: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
