@@ -3,15 +3,13 @@
 name: CI
 
 # Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+on:
   workflow_dispatch:
+    inputs:
+      RunTestA:
+        type: boolean
+        description: Run test A
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -48,6 +46,7 @@ jobs:
         run: echo Hello, world!
 
   SmokeTestA:
+    if: github.event.inputs.RunTestA == True
     needs: GenerateDefFiles
     environment: Test
     runs-on: ubuntu-latest
