@@ -46,7 +46,7 @@ jobs:
         run: echo Hello, world!
 
   SmokeTestA:
-    if: github.event.inputs.RunTestA == True
+    if: github.event.inputs.RunTestA == 'true'
     needs: GenerateDefFiles
     environment: Test
     runs-on: ubuntu-latest
